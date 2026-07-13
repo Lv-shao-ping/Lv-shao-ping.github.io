@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>智能车车模设计 | 吕胜平 · 机械工程作品集</title><meta name="author" content="吕胜平"><meta name="copyright" content="吕胜平"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、项目背景与目标参加全国大学生智能车竞赛疯狂电路赛道，针对壁面行驶智能车的行驶需求，设计一套尽可能轻便且结构硬度达标的车模，用于安装驱动板，电池，核心板等套件，同时设计适配130高速电机的离心负压吸附机构，目标在整机重量≤80g的前提下，提供≥20N的稳定吸附力，保障赛车在赛道拐弯处稳定行驶。 二、方案选型经过往届缩微电磁赛道车模的研究与学长指导，以及队友设计的电路板大小尺寸，最终设计比较轻便的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能车车模设计">
+<meta property="og:url" content="http://example.com/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="吕胜平 · 机械工程作品集">
+<meta property="og:description" content="一、项目背景与目标参加全国大学生智能车竞赛疯狂电路赛道，针对壁面行驶智能车的行驶需求，设计一套尽可能轻便且结构硬度达标的车模，用于安装驱动板，电池，核心板等套件，同时设计适配130高速电机的离心负压吸附机构，目标在整机重量≤80g的前提下，提供≥20N的稳定吸附力，保障赛车在赛道拐弯处稳定行驶。 二、方案选型经过往届缩微电磁赛道车模的研究与学长指导，以及队友设计的电路板大小尺寸，最终设计比较轻便的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%B4%9F%E5%8E%8B%E5%B0%81%E9%9D%A2.png">
+<meta property="article:published_time" content="2026-06-15T06:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-13T09:10:59.346Z">
+<meta property="article:author" content="吕胜平">
+<meta property="article:tag" content="流体仿真">
+<meta property="article:tag" content="离心风轮">
+<meta property="article:tag" content="结构优化">
+<meta property="article:tag" content="3D打印">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%B4%9F%E5%8E%8B%E5%B0%81%E9%9D%A2.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "智能车车模设计",
+  "url": "http://example.com/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/",
+  "image": "http://example.com/images/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%B4%9F%E5%8E%8B%E5%B0%81%E9%9D%A2.png",
+  "datePublished": "2026-06-15T06:00:00.000Z",
+  "dateModified": "2026-07-13T09:10:59.346Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "吕胜平",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '智能车车模设计',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background: [object Object];"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E9%9B%86/"><i class="fa-fw fa fa-briefcase"></i><span> 项目作品集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/files/lvshengping-resume.pdf"><i class="fa-fw fa fa-download"></i><span> 简历下载</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%B4%9F%E5%8E%8B%E5%B0%81%E9%9D%A2.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吕胜平 · 机械工程作品集</span></a><a class="nav-page-title" href="/"><span class="site-name">智能车车模设计</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E9%9B%86/"><i class="fa-fw fa fa-briefcase"></i><span> 项目作品集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/files/lvshengping-resume.pdf"><i class="fa-fw fa fa-download"></i><span> 简历下载</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">智能车车模设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-15T06:00:00.000Z" title="发表于 2026-06-15 14:00:00">2026-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-13T09:10:59.346Z" title="更新于 2026-07-13 17:10:59">2026-07-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E4%B8%80/">项目作品一</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="一、项目背景与目标"><a href="#一、项目背景与目标" class="headerlink" title="一、项目背景与目标"></a>一、项目背景与目标</h2><p>参加全国大学生智能车竞赛疯狂电路赛道，针对壁面行驶智能车的行驶需求，设计一套尽可能轻便且结构硬度达标的车模，用于安装驱动板，电池，核心板等套件，同时设计适配130高速电机的离心负压吸附机构，目标在整机重量≤80g的前提下，提供≥20N的稳定吸附力，保障赛车在赛道拐弯处稳定行驶。</p>
+<h2 id="二、方案选型"><a href="#二、方案选型" class="headerlink" title="二、方案选型"></a>二、方案选型</h2><p>经过往届缩微电磁赛道车模的研究与学长指导，以及队友设计的电路板大小尺寸，最终设计比较轻便的四轮方案车模，同时利用Ansys进行简单的受力分析，进行挖槽处理减轻车辆整体重量；<br>对比轴流风扇、离心风轮、侧流风机三种方案，最终选用后弯式离心风轮方案，兼顾负压值与流量特性，适配130电机7万转的高转速工况，同时搭配密封毛刷结构减少泄漏。</p>
+<h2 id="三、结构设计与优化"><a href="#三、结构设计与优化" class="headerlink" title="三、结构设计与优化"></a>三、结构设计与优化</h2><ol>
+<li><strong>风轮设计</strong>：七片后弯式叶片，叶径32mm，出口角35°，优化叶片厚度与攻角，平衡刚性与风阻</li>
+<li><strong>壳体设计</strong>：一体化3D打印蜗壳，PLA材质，壁厚0.8mm，优化进风风道减少风阻</li>
+<li><strong>密封结构</strong>：车底周边加装尼龙密封毛刷，控制车底与赛道间隙≤1mm，降低负压泄漏</li>
+</ol>
+<h2 id="四、仿真与性能验证"><a href="#四、仿真与性能验证" class="headerlink" title="四、仿真与性能验证"></a>四、仿真与性能验证</h2><ol>
+<li><strong>流场仿真</strong>：使用ANSYS Fluent完成风轮流场仿真，优化叶片型线，仿真最大负压值达26N，满足设计要求</li>
+<li><strong>结构校核</strong>：静力学分析验证7万转转速下叶片应力、变形量均在材料许用范围内，无共振风险</li>
+<li><strong>实物测试</strong>：实测整机重量72g，稳定负压值22N，连续运行无抖动、变形问题</li>
+</ol>
+<h2 id="五、调试与迭代"><a href="#五、调试与迭代" class="headerlink" title="五、调试与迭代"></a>五、调试与迭代</h2><ul>
+<li>优化进风风道结构后，电机负载降低，转速提升8%，整车续航提升12%</li>
+<li>调整叶片厚度从0.3mm优化至0.5mm，解决高转速下叶片颤振问题，负压稳定性提升30%</li>
+</ul>
+<h2 id="六、项目成果"><a href="#六、项目成果" class="headerlink" title="六、项目成果"></a>六、项目成果</h2><ul>
+<li>全国大学生智能车竞赛 西部赛区三等奖</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">吕胜平</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/">http://example.com/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">吕胜平 · 机械工程作品集</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B5%81%E4%BD%93%E4%BB%BF%E7%9C%9F/">流体仿真</a><a class="post-meta__tags" href="/tags/%E7%A6%BB%E5%BF%83%E9%A3%8E%E8%BD%AE/">离心风轮</a><a class="post-meta__tags" href="/tags/%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96/">结构优化</a><a class="post-meta__tags" href="/tags/3D%E6%89%93%E5%8D%B0/">3D打印</a></div><div class="post-share"><div class="social-share" data-image="/images/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%B4%9F%E5%8E%8B%E5%B0%81%E9%9D%A2.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/13/hello-world/" title="Welcome to my mechanical creativity gallery"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Welcome to my mechanical creativity gallery</div></div><div class="info-2"><div class="info-item-1">昆明理工大学机械工程专业大三本科生，聚焦智能装备设计与新能源装备方向，具备从结构设计、仿真验证到样机调试的完整项目经验，拥有多项国家级、省部级竞赛成果，意向从事新能源领域机械技术与设备运维相关工作。 核心标签：机械结构设计 | 有限元仿真 | 机电系统调试 | 风电装备储备 | 竞赛项目经验 </div></div></div></a><a class="pagination-related" href="/2026/05/20/%E6%99%BA%E8%83%BD%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%BE%E8%AE%A1/" title="中药材智能根切机器人设计"><img class="cover" src="/images/%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">中药材智能根切机器人设计</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标针对中药材须根切除依赖人工、效率低、精度差的行业痛点，设计一款基于机器视觉与并联机构的智能根切机器人，实现三七、人参等根茎类药材须根的自动化精准切除，替代人工加工，提升生产效率与成品一致性。本人担任项目队长，主导机械结构设计、精度优化与样机调试。 二、整体方案选型对比SCARA机器人、直角坐标机械手、三自由度并联机构三种方案，最终选用3-PTT解耦式并联机构作为执行端，搭配机器视觉轮廓提取系统，兼具高刚度、高精度、低惯量的优势，适配药材切割的高速高精度作业需求。 三、机械结构设计 并联执行机构：自主设计三自由度3-PTT并联机器人，三条支链120°圆周分布，采用平行四边形支链结构提升整体刚度，工作空间覆盖50-100mm直径药材 切割刀头设计：模块化旋转刀头，支持周向360°无级调节、径向50mm行程调节，适配不同尺寸药材，刀片30秒快速更换，已申请发明专利 结构优化：通过增加立柱固定杆、改进虎克铰限位结构（卡簧改锁紧螺母），将机构末端定位误差从±0.8mm优化至±0.07mm，满足精细切割要求  四、控制与仿真验证 控制系统：基于STM32单片机搭建伺服控制系...</div></div></div></a></nav></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 吕胜平</span></div><div class="footer_custom_text">吕胜平 · 机械工程个人作品集</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
