@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数学建模-无人机投放烟雾弹策略分析优化 | 吕胜平 · 机械工程作品集</title><meta name="author" content="吕胜平"><meta name="copyright" content="吕胜平"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、项目背景与目标 针对防空突防对抗中，饱和来袭导弹对真目标的威胁问题，设计一款基于多无人机协同的烟幕干扰弹投放控制系统。通过抛撒动态匀速下沉的掩护气溶胶云团，阻断导弹突防视线，从而对核心固定目标实施战术保护。 项目核心目标是在满足无人机物理机动性能区间、多弹抛撒最小时间间隔等硬性约束下，精细化解算出多无人机的最优飞行航向、速度、干扰弹抛撒时刻以及时间引信延迟，最大化突防突袭场景下的连续有效遮蔽时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学建模-无人机投放烟雾弹策略分析优化">
+<meta property="og:url" content="https://lv-shao-ping.github.io/2025/10/10/%E7%83%9F%E5%B9%95%E5%B9%B2%E6%89%B0%E5%BC%B9%E7%9A%84%E6%8A%95%E6%94%BE%E7%AD%96%E7%95%A5/index.html">
+<meta property="og:site_name" content="吕胜平 · 机械工程作品集">
+<meta property="og:description" content="一、项目背景与目标 针对防空突防对抗中，饱和来袭导弹对真目标的威胁问题，设计一款基于多无人机协同的烟幕干扰弹投放控制系统。通过抛撒动态匀速下沉的掩护气溶胶云团，阻断导弹突防视线，从而对核心固定目标实施战术保护。 项目核心目标是在满足无人机物理机动性能区间、多弹抛撒最小时间间隔等硬性约束下，精细化解算出多无人机的最优飞行航向、速度、干扰弹抛撒时刻以及时间引信延迟，最大化突防突袭场景下的连续有效遮蔽时">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lv-shao-ping.github.io/images/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B0%81%E9%9D%A2.png">
+<meta property="article:published_time" content="2025-10-10T06:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-14T13:59:26.120Z">
+<meta property="article:author" content="吕胜平">
+<meta property="article:tag" content="数学建模">
+<meta property="article:tag" content="运动学仿真">
+<meta property="article:tag" content="遗传算法">
+<meta property="article:tag" content="混合整数规划">
+<meta property="article:tag" content="MATLAB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lv-shao-ping.github.io/images/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B0%81%E9%9D%A2.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "数学建模-无人机投放烟雾弹策略分析优化",
+  "url": "https://lv-shao-ping.github.io/2025/10/10/%E7%83%9F%E5%B9%95%E5%B9%B2%E6%89%B0%E5%BC%B9%E7%9A%84%E6%8A%95%E6%94%BE%E7%AD%96%E7%95%A5/",
+  "image": "https://lv-shao-ping.github.io/images/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B0%81%E9%9D%A2.png",
+  "datePublished": "2025-10-10T06:00:00.000Z",
+  "dateModified": "2026-07-14T13:59:26.120Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "吕胜平",
+      "url": "https://lv-shao-ping.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lv-shao-ping.github.io/2025/10/10/%E7%83%9F%E5%B9%95%E5%B9%B2%E6%89%B0%E5%BC%B9%E7%9A%84%E6%8A%95%E6%94%BE%E7%AD%96%E7%95%A5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数学建模-无人机投放烟雾弹策略分析优化',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background: [object Object];"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-briefcase"></i><span> 项目作品集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/files/lvshengping-resume.pdf"><i class="fa-fw fa fa-download"></i><span> 简历下载</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B0%81%E9%9D%A2.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吕胜平 · 机械工程作品集</span></a><a class="nav-page-title" href="/"><span class="site-name">数学建模-无人机投放烟雾弹策略分析优化</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-briefcase"></i><span> 项目作品集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/files/lvshengping-resume.pdf"><i class="fa-fw fa fa-download"></i><span> 简历下载</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">数学建模-无人机投放烟雾弹策略分析优化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-10T06:00:00.000Z" title="发表于 2025-10-10 14:00:00">2025-10-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-14T13:59:26.120Z" title="更新于 2026-07-14 21:59:26">2026-07-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E9%9B%86/">项目作品集</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>一、项目背景与目标</p>
+<p>针对防空突防对抗中，饱和来袭导弹对真目标的威胁问题，设计一款基于多无人机协同的烟幕干扰弹投放控制系统。通过抛撒动态匀速下沉的掩护气溶胶云团，阻断导弹突防视线，从而对核心固定目标实施战术保护。</p>
+<p>项目核心目标是在满足无人机物理机动性能区间、多弹抛撒最小时间间隔等硬性约束下，精细化解算出多无人机的最优飞行航向、速度、干扰弹抛撒时刻以及时间引信延迟，最大化突防突袭场景下的连续有效遮蔽时长。</p>
+<p>本人在项目中担任队长，主导了导弹-无人机-烟幕弹多体动态空间运动学建模、突防拦截几何判据推导、启发式协同算法设计及全流程 MATLAB 仿真代码的开发与迭代。**</p>
+<p>二、 3D 模型与物理样机演示</p>
+<p>1. 算法寻优与核心计算流程</p>
+<p>系统通过输入固定参数，同步解算无人机抛撒、烟幕自由落体、云团中心垂直下沉以及导弹匀速逼近的实时三维坐标，利用向量投影矩阵动态判定视线段相交状态，进而驱动智能算法实现全局寻优。</p>
+<div style="text-align: center; margin: 20px 0;">
+
+<p>&#x20; <img src="/images/math-flowchart.png" alt="数学建模算法流程图" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 75%;"></p>
+</div>
+
+
+<h3 id="2-实际运行视频演示"><a href="#2-实际运行视频演示" class="headerlink" title="2. 实际运行视频演示"></a>2. 实际运行视频演示</h3><blockquote>
+<p>🎬 <strong>点击播放</strong>：查看基于 MATLAB 渲染的无人机群立体交战、烟幕云团全寿命周期动态覆盖导弹视线段的完整仿真动画。</p>
+</blockquote>
+<div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin: 20px 0;">
+  <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116918472218559&bvid=BV1SKNt66EeE&cid=39947471929&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
+</div>
+
+<hr>
+<p>三、整体方案选型</p>
+<p>面对单机接力抛撒 3 枚干扰弹，或者三架无人机（FY1, FY2, FY3）多方位时空协同投弹的场景。团队创新性提出 “时空候选动作离散化 + 覆盖矩阵”模型，将投放行为抽象为离散动作池进行全局规划。通过 GA 与粒子群优化（PSO）算法双轨并行寻优，无人机群在时间轴上形成了完美的互补接力链条，协同拦截时长稳定达到 7.12 秒，且中间无任何连续漏防间隙。</p>
+<p>四、机械结构设计</p>
+<p>1. 单维决策寻优：基于遗传算法（GA）优化，将航向角、飞行速度、投放时刻、起爆延迟 4 维非线性变量进行群体编码，单枚弹的极值拦截时长被大幅拓宽至 8.72 秒。</p>
+<p>2. 多维饱和防御：针对 5 架无人机（至多 15 枚弹）应对 3 枚具有高度威胁性的来袭导弹（M1, M2, M3）的复杂极端多维对抗场景，构建了大规模二元混合整数规划（MIP）模型。</p>
+<p>3. 空间冗余覆盖：GA、PSO 与模拟退火（SA）深度竞速对比表明，GA 以 87.63s 的适应度胜出。合并重叠区间后，实现了高达 68.37 秒的实际无断点高冗余防御覆盖。</p>
+<p>&#x20;五、控制与仿真验证</p>
+<p>1. 视线段遮蔽几何判据：在任意时刻 t，导弹 r_{Mi}(t)与真目标的连线定义为动态视线段 Li(s,t)，利用法平面的向量投影关系，求得匀速下沉的球状云团中心 c_{j,k}(t) 到该动态视线段的最短空间距离 d_{i,j,k}(t)。</p>
+<p>2. 数据计算验证：在标准初值约束下，运行高精度时间步进仿真，精准求解出云团侧上方交叉穿过视线段全过程，精细化计算得出基准有效遮蔽时长为 1.41 秒。</p>
+<div style="display: flex; justify-content: space-between; gap: 15px; margin: 20px 0;">
+
+<p>&#x20; <div style="flex: 1; text-align: center;"></p>
+<p>&#x20;   <img src="/images/math-problem1.png" alt="问题一3D空间运动轨迹" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></p>
+<p>&#x20; </div></p>
+<p>&#x20; <div style="flex: 1; text-align: center;"></p>
+<p>&#x20;   <img src="/images/math-problem1-distance.png" alt="问题一中心拦截距离" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></p>
+<p>&#x20; </div></p>
+</div>
+
+
+
+<div style="text-align: center; margin: 20px 0;">
+
+<p>&#x20; <img src="/images/math-pso-ga.png" alt="多机时间协同接力图" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 60%;"></p>
+</div>
+
+
+
+<p>六、实物与调试</p>
+<p>- 算法自动解算并导出符合竞赛格式的战术配置文件表格（包含 <code>result1.xlsx</code>、<code>result2.xlsx</code>、<code>result3.xlsx</code> 等全部标准解）。</p>
+<p>- 代码已实现完全模块化封装，支持在各种多峰、非光滑、强约束环境下的快速局部微调与全局搜索。</p>
+<p>七、项目成果与技术文件</p>
+<p>竞赛荣誉：高教社杯全国大学生数学建模竞赛 省级三等奖。</p>
+<div style="text-align: center; margin: 20px 0;">
+
+<p>&#x20; <img src="/images/math-certificate.png" alt="数学建模获奖证书" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); max-width: 45%;"></p>
+</div>
+
+
+
+<p>&#x20;📄 说明书在线预览（仅限在线查阅，不支持下载/复制）</p>
+<div class="pdf-container" style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); position: relative;">
+
+<p>&#x20; <div style="position: absolute; top: 0; left: 0; width: 100%; height: 55px; background: transparent; z-index: 10;"></div></p>
+<p>&#x20; <object data="/files/math-modeling-paper.pdf#toolbar=0\&navpanes=0\&scrollbar=0" type="application/pdf" width="100%" height="700px" style="border: none;"></p>
+<p>&#x20;   <p>您的浏览器不支持在线预览 PDF，请联系作者获取文档。</p></p>
+<p>&#x20; </object></p>
+</div>
+
+
+
+<p>&#x20;📂 相关全套论文与算法源码下载</p>
+<p>📌 归档打包下载：[点击下载《烟幕干扰弹投放策略全套论文与源码归档》.zip](/zip/math-modeling-code-v1.zip)</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lv-shao-ping.github.io">吕胜平</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lv-shao-ping.github.io/2025/10/10/%E7%83%9F%E5%B9%95%E5%B9%B2%E6%89%B0%E5%BC%B9%E7%9A%84%E6%8A%95%E6%94%BE%E7%AD%96%E7%95%A5/">https://lv-shao-ping.github.io/2025/10/10/%E7%83%9F%E5%B9%95%E5%B9%B2%E6%89%B0%E5%BC%B9%E7%9A%84%E6%8A%95%E6%94%BE%E7%AD%96%E7%95%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lv-shao-ping.github.io" target="_blank">吕胜平 · 机械工程作品集</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a><a class="post-meta__tags" href="/tags/%E8%BF%90%E5%8A%A8%E5%AD%A6%E4%BB%BF%E7%9C%9F/">运动学仿真</a><a class="post-meta__tags" href="/tags/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">遗传算法</a><a class="post-meta__tags" href="/tags/%E6%B7%B7%E5%90%88%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/">混合整数规划</a><a class="post-meta__tags" href="/tags/MATLAB/">MATLAB</a></div><div class="post-share"><div class="social-share" data-image="/images/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B0%81%E9%9D%A2.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/05/20/%E6%99%BA%E8%83%BD%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%BE%E8%AE%A1/" title="中药材智能根切机器人设计"><img class="cover" src="/images/%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">中药材智能根切机器人设计</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标针对中药材须根切除依赖人工、效率低、精度差的行业痛点，设计一款基于机器视觉与并联机构的智能根切机器人，实现三七、人参等根茎类药材须根的自动化精准切除，替代人工加工，提升生产效率与成品一致性。本人担任项目队长，主导机械结构设计、精度优化与样机调试。 二、 3D 模型与物理样机演示1. 3D 模型在线交互 💡 操作提示：您可以用鼠标在下方窗口内拖动旋转、滚轮缩放，直观查看 3-PTT 并联机构的机械设计细节。           2. 实际运行视频演示 🎬 点击播放：查看 3-PTT 智能根切机器人实际样机的作业过程。            三、整体方案选型对比SCARA机器人、直角坐标机械手、三自由度并联机构三种方案，最终选用3-PTT解耦式并联机构作为执行端，搭配机器视觉轮廓提取系统，兼具高刚度、高精度、低惯量的优势，适配药材切割的高速高精度作业需求。 四、机械结构设计 并联执行机构：自主设计三自由度 3-PTT 并联机器人，三条支链 120° 圆周分布，采用平行四边形支链结构提升整体刚度，工作空间覆盖 50-100mm 直径药材。 切割刀头设计：模块化旋转...</div></div></div></a><a class="pagination-related" href="/2025/10/10/%E6%99%BA%E8%83%BD%E8%8C%B6%E9%A5%BC%E9%A2%84%E5%88%86%E7%A6%BB%E8%A3%85%E7%BD%AE%E8%AE%BE%E8%AE%A1/" title="智能茶饼预分离装置设计"><img class="cover" src="/images/%E8%8C%B6%E9%A5%BC%E5%88%86%E7%A6%BB%E8%A3%85%E7%BD%AE%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">智能茶饼预分离装置设计</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标针对普洱茶饼坚硬、人工拆分困难、碎茶率高的行业痛点，设计一款茶饼预分离装置，在保持茶饼整体形态完整的前提下，在茶饼表面切割出均匀的网格状预分离槽，消费者可轻松掰下定量小块，解决泡茶取茶不便的问题。 二、整体方案采用「底部顶升压切+转盘分度+刀具间距可调」的整体方案，通过螺杆连杆增力机构提供切削力，搭配光电开关实现90°精准分度，可适配180-220mm不同尺寸的普洱茶饼，完成横纵双向网格切槽。 三、核心机构设计 切割进给增力机构：采用正反牙螺杆+四连杆结构（类千斤顶原理），将电机扭矩放大为顶升切削力，满足茶饼压切的大负载需求 定位转向机构：定心结构适配茶饼底部凹槽，搭配齿轮传动与光电开关，实现90°精准分度，保证横纵切槽垂直对齐 切割定位机构：步进电机驱动丝杠调节切刀间距，可灵活调整预分离块大小；搭配浮动刀套结构，解决退刀时带起茶饼的问题 切刀优化：弧形刀刃适配茶饼曲面，通过Abaqus有限元分析优化刃角参数，降低切槽崩边率  四、控制系统设计 主控采用STM32F407单片机，搭配TB6612直流电机驱动、DRV8825步进电机驱动，实现三电机协同控制 搭载压...</div></div></div></a></nav></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 吕胜平</span></div><div class="footer_custom_text">吕胜平 · 机械工程个人作品集</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
