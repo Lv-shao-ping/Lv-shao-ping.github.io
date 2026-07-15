@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于时频信号处理与深度学习的轴承故障诊断系统 | 吕胜平 · 机械工程作品集</title><meta name="author" content="吕胜平"><meta name="copyright" content="吕胜平"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、项目背景与目标在旋转机械与现代工业装备体系中，轴承作为传递动力与承载的核心构件，长期处于高速、重载等恶劣工况下，极易出现外圈点蚀、剥落等典型缺陷。若不能实施预测性监测，将引发灾难性的机械停机故障。 本诊断系统针对 6904 深沟球轴承（依托 XAG a40 无刷电机动力源），利用数据采集硬件捕获健康状态与外圈故障（BPFO）状态下的高频振动信号。项目融合了传统时频域无量纲指标、希尔伯特解调包络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于时频信号处理与深度学习的轴承故障诊断系统">
+<meta property="og:url" content="https://lv-shao-ping.github.io/2025/01/05/%E9%BD%BF%E8%BD%AE%E7%AE%B1%E6%8C%AF%E5%8A%A8%E4%B8%8E%E8%BD%AC%E9%80%9F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="吕胜平 · 机械工程作品集">
+<meta property="og:description" content="一、项目背景与目标在旋转机械与现代工业装备体系中，轴承作为传递动力与承载的核心构件，长期处于高速、重载等恶劣工况下，极易出现外圈点蚀、剥落等典型缺陷。若不能实施预测性监测，将引发灾难性的机械停机故障。 本诊断系统针对 6904 深沟球轴承（依托 XAG a40 无刷电机动力源），利用数据采集硬件捕获健康状态与外圈故障（BPFO）状态下的高频振动信号。项目融合了传统时频域无量纲指标、希尔伯特解调包络">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lv-shao-ping.github.io/images/gearbox-testing-cover.png">
+<meta property="article:published_time" content="2025-01-05T06:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-15T07:37:06.766Z">
+<meta property="article:author" content="吕胜平">
+<meta property="article:tag" content="MATLAB">
+<meta property="article:tag" content="信号处理">
+<meta property="article:tag" content="故障诊断">
+<meta property="article:tag" content="变分模态分解">
+<meta property="article:tag" content="卷积神经网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lv-shao-ping.github.io/images/gearbox-testing-cover.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "基于时频信号处理与深度学习的轴承故障诊断系统",
+  "url": "https://lv-shao-ping.github.io/2025/01/05/%E9%BD%BF%E8%BD%AE%E7%AE%B1%E6%8C%AF%E5%8A%A8%E4%B8%8E%E8%BD%AC%E9%80%9F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C/",
+  "image": "https://lv-shao-ping.github.io/images/gearbox-testing-cover.png",
+  "datePublished": "2025-01-05T06:00:00.000Z",
+  "dateModified": "2026-07-15T07:37:06.766Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "吕胜平",
+      "url": "https://lv-shao-ping.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lv-shao-ping.github.io/2025/01/05/%E9%BD%BF%E8%BD%AE%E7%AE%B1%E6%8C%AF%E5%8A%A8%E4%B8%8E%E8%BD%AC%E9%80%9F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于时频信号处理与深度学习的轴承故障诊断系统',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="bg-animation" id="web_bg" style="background: [object Object];"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-briefcase"></i><span> 项目作品集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/files/lvshengping-resume.pdf"><i class="fa-fw fa fa-download"></i><span> 简历下载</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/gearbox-testing-cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吕胜平 · 机械工程作品集</span></a><a class="nav-page-title" href="/"><span class="site-name">基于时频信号处理与深度学习的轴承故障诊断系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-briefcase"></i><span> 项目作品集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/files/lvshengping-resume.pdf"><i class="fa-fw fa fa-download"></i><span> 简历下载</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基于时频信号处理与深度学习的轴承故障诊断系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-05T06:00:00.000Z" title="发表于 2025-01-05 14:00:00">2025-01-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-15T07:37:06.766Z" title="更新于 2026-07-15 15:37:06">2026-07-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E9%9B%86/">项目作品集</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="一、项目背景与目标"><a href="#一、项目背景与目标" class="headerlink" title="一、项目背景与目标"></a>一、项目背景与目标</h2><p>在旋转机械与现代工业装备体系中，轴承作为传递动力与承载的核心构件，长期处于高速、重载等恶劣工况下，极易出现外圈点蚀、剥落等典型缺陷。若不能实施预测性监测，将引发灾难性的机械停机故障。</p>
+<p>本诊断系统针对 6904 深沟球轴承（依托 XAG a40 无刷电机动力源），利用数据采集硬件捕获健康状态与外圈故障（BPFO）状态下的高频振动信号。项目融合了传统时频域无量纲指标、希尔伯特解调包络谱、自适应信号分解（VMD/EMD）以及一维卷积神经网络（1D-CNN），构建了一套全自动化的智能故障诊断与动态转速解算闭环链路。</p>
+<p><strong>本人在项目中担任队长，主导了导弹-无人机-烟幕弹多体动态空间运动学建模、突防拦截几何判据推导、启发式协同算法设计及全流程 MATLAB 仿真代码的开发与迭代。</strong></p>
+<hr>
+<h2 id="二、-算法运行全流程"><a href="#二、-算法运行全流程" class="headerlink" title="二、 算法运行全流程"></a>二、 算法运行全流程</h2><h3 id="1-算法数据处理全链路流程图"><a href="#1-算法数据处理全链路流程图" class="headerlink" title="1. 算法数据处理全链路流程图"></a>1. 算法数据处理全链路流程图</h3><p>本诊断分析系统通过规范化的信号清洗、多维解调及智能网络训练，实现从原始振动序列到最终诊断报告的自动化生成。</p>
+<h1 id="text"><a href="#text" class="headerlink" title="```text"></a>```text</h1><pre><code>                    轴 承 故 障 诊 断 分 析 系 统 算 法 运 行 流 程 图
+</code></pre>
+<p>==================================================================================================</p>
+<p> 【 1. 数据加载与预处理 】 ➜   · 读取正常/故障轴承 .mat 原始信号<br>                             · 矩阵转置校准（统一转换为列向量）<br>                             · 注入工况参数（采样率 Fs=25600Hz，建立时间向量）<br>                                      ▼<br> 【 2. 多维时域指标分析 】 ➜   · 计算 11 项时域特征（RMS、峭度、峰值、峰值因子、裕度因子等）<br>                             · 截取 5000 点时域波形图、输出时域无量纲指标条形对比图<br>                                      ▼<br> 【 3. 频域特征变换 (FFT)】➜   · 快速傅里鱼变换（FFT）：提取幅值谱与线性频谱特征<br>                             · 锁定 0-2000Hz 核心频段，对比正常/故障基频与谐波分布<br>                                      ▼<br> 【 4. 解调包络分析谱 】   ➜   · 希尔伯特变换（Hilbert）：提取低频大冲击的信号包络解调波形<br>                             · FFT 包络谱计算（锁定 0-500Hz），用于提取轴承故障特征频率<br>                                      ▼<br> 【 5. 自适应非平稳分解 】 ➜   · 检测 VMD 工具箱 ➜ [已安装] ➜ 自适应变分模态分解 (K=4 IMF分量)<br>                                               ➜ [未安装] ➜ 改用 EMD 分解 / 小波包分解 (db4)<br>                                      ▼<br> 【 6. 智能诊断样本分割 】 ➜   · 时域数据分段（长度 1024 点，重叠率 50%），限制样本数 1000 组<br>                             · 标定分类标签（正常=0，故障=1），打乱打散后按 8:2 划分训练/测试集<br>                                      ▼<br>                             ┌───────────────────────┴───────────────────────┐<br>                             ▼ [工具箱可用]                                  ▼ [工具箱缺失/失败]<br> 【 7. 诊断模型训练与评估 】   · 搭建 1D-CNN 神经网络模型                     · 提取 8 维特征矩阵<br>                             · 3层卷积+批归一化+全连接层                    · 构建 RBF 核函数 SVM 分类器<br>                             · 输出混淆矩阵，保存 cnn_model.mat             · 输出 SVM 分类混淆矩阵<br>                                      ▼<br> 【 8. 理论故障频率解算 】 ➜   · 注入 6904 轴承物理几何参数（滚动体直径 d、节径 D、数量 z=11）<br>                             · 精确解算出 4 大故障特征频率因子（BPFO、BPFI、FTF、BSF）<br>                                      ▼<br>                             ┌───────────────────────┴───────────────────────┐<br>                             ▼ (正常信号)                                     ▼ (故障信号)<br> 【 9. 智能动态转速计算 】   · 包络谱寻找 5-100Hz 峰值解算转频              · 寻找 30-300Hz 的最大 BPFO 峰值<br>                             · 自动解算实际转速 (RPM)                       · 依据特征因子反推精确故障转速<br>                                      ▼<br> 【10. 综合报告与文件保存】 ➜   · 终端打印时域变化率、网络分类准确率、转速相对差值对比图及诊断结论<br>                             · 创建「轴承完整分析结果」目录 ➜ 自动导出全部图片、.mat 数据及 .txt 报告<br>==================================================================================================<br>2. Mermaid 交互式网络拓扑流程代码段graph TD<br>    classDef process fill:#f4f5f7,stroke:#333,stroke-width:2px;<br>    classDef startEnd fill:#2d3748,stroke:#333,stroke-width:2px,color:#fff;<br>    classDef condition fill:#edf2f7,stroke:#333,stroke-width:1px;</p>
+<pre><code>A[开始: 动力状态监控] --&gt; B(1. 信号加载与预处理&lt;br&gt;列向量校准 / 注入采样率 Fs=25600Hz)
+B --&gt; C(2. 11维时域特征提取&lt;br&gt;计算无量纲指标峭度与裕度因子)
+C --&gt; D(3. FFT 线性频谱变换&lt;br&gt;提取 0-2000Hz 固有频率能量响应)
+D --&gt; E(4. Hilbert 解调包络谱&lt;br&gt;构建 0-500Hz 提取轴承微弱冲击特征)
+
+E --&gt; F&#123;5. 检测本地环境是否安装 VMD 工具箱&#125;
+F -- Yes --&gt; G(自适应变分模态分解&lt;br&gt;K=4 模态 IMF 信号剥离)
+F -- No --&gt; H(降级调用 EMD 分解&lt;br&gt;或采用 db4 小波包分解)
+
+G --&gt; I(6. 诊断数据重塑分段&lt;br&gt;滑动窗口 1024 点/50%重叠/打乱划分 8:2)
+H --&gt; I
+
+I --&gt; J&#123;7. 检测 Neural Network 工具箱状态&#125;
+J -- Available --&gt; K(一维 1D-CNN 神经网络模型&lt;br&gt;3层卷积+BN层+Dropout自适应训练)
+J -- Unavailable --&gt; L(降级提取 8维有量纲矩阵&lt;br&gt;构建 RBF 核函数 SVM 支持向量机)
+
+K --&gt; M(8. 理论断裂频率映射&lt;br&gt;基于6904轴承几何参数计算特征因子)
+L --&gt; M
+
+M --&gt; N(9. 双轨转速自适应计算&lt;br&gt;正常信号包络谱寻低频转频 / 故障信号BPFO频率反推转速)
+N --&gt; O(10. 深度导出与报告生成&lt;br&gt;自动创建结果目录并导出报告.txt及全部图表)
+O --&gt; P[结束: 故障健康诊断闭环]
+
+class A,P startEnd;
+class B,C,D,E,G,H,I,K,L,M,N,O process;
+class F,J condition;
+</code></pre>
+<p>三、整体方案选型系统抛弃了单一的时域振幅阈值报警，选用时频解调+智能模型双轨校验的方案。针对非线性、非平稳的轴承振动，系统通过高频解调技术（希尔伯特变换）将微弱的故障冲击从高频背景噪声中剥离；同时配合一维卷积神经网络（1D-CNN）提取波形中深层次的特征，防止因偶发外部干扰导致的误报。</p>
+<p>四、核心算法设计与系统实现多维时域特征矩阵：算法内建计算函数同步解算均值、标准差、RMS、偏度、峭度等 11 项时域特征。利用峭度因子与脉冲因子的高敏感度，对轴承早期微弱剥落冲击进行初步筛查。自适应变分模态分解（VMD）：针对强噪声干扰，系统设置惩罚因子 $\alpha=2000$，自适应剥离出 4 layer 固有模态分量（IMF），有效抑制了电机交变磁场带来的电磁谐波噪声。1D-CNN 智能分类诊断：构建包含 3 组“卷积层 + 批归一化（BN）+ ReLU 激活 + 最大池化”的深度网络，配以 0.5 丢弃率（Dropout）防止过拟合，对正常与外圈故障样本实现自动特征学习。</p>
+<p>五、控制与仿真验证（双轨转速计算与诊断结论）系统利用包络谱在低频段的优势，设计了自适应双轨转速解算模块。1. 正常状态转速提取系统自动检索 5-100Hz 范围内的包络谱能量峰值。正常状态下解算出轴承的固有转频脉冲，自动反算出电机的实际机械转速，并实时输出正常轴承包络谱映射图。2. 故障状态特征锁定外圈发生点蚀故障（BPFO）时，系统检测 30-300Hz 的极大值区间，精准捕获外圈故障特征频率响应。通过解算出的频率因子，精确反推并校准故障工况下的实际轴承转速（RPM），并与理论故障特征频率进行重合度校验。</p>
+<p>六、实物与调试系统具备高健壮性环境自适应力。当服务器缺少深度学习工具箱时，程序会自动触发智能降级算法：提取 8 维特征特征向量，切换为 RBF 核函数的支持向量机（SVM）分类器完成诊断，确保工业现场调试不中断。分析结果以及生成的全序列运行曲线、混淆矩阵卡片和 分析报告.txt 将自动归档封装，便于向维护人员提供定量化的健康监控报表。</p>
+<p>七、项目成果与技术文件成果评价：昆明理工大学机电工程学院《工程测试技术基础》课程拓展训练优秀成果。📄 </p>
+<p>实验报告在线预览（仅限在线查阅，不支持下载/复制）<br>📂 相关全套论文与算法源码下载<br>📌 归档打包下载：点击下载《轴承故障诊断分析全套源码与数据归档》.zip</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lv-shao-ping.github.io">吕胜平</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lv-shao-ping.github.io/2025/01/05/%E9%BD%BF%E8%BD%AE%E7%AE%B1%E6%8C%AF%E5%8A%A8%E4%B8%8E%E8%BD%AC%E9%80%9F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C/">https://lv-shao-ping.github.io/2025/01/05/%E9%BD%BF%E8%BD%AE%E7%AE%B1%E6%8C%AF%E5%8A%A8%E4%B8%8E%E8%BD%AC%E9%80%9F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lv-shao-ping.github.io" target="_blank">吕胜平 · 机械工程作品集</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MATLAB/">MATLAB</a><a class="post-meta__tags" href="/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">信号处理</a><a class="post-meta__tags" href="/tags/%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD/">故障诊断</a><a class="post-meta__tags" href="/tags/%E5%8F%98%E5%88%86%E6%A8%A1%E6%80%81%E5%88%86%E8%A7%A3/">变分模态分解</a><a class="post-meta__tags" href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">卷积神经网络</a></div><div class="post-share"><div class="social-share" data-image="/images/gearbox-testing-cover.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/01/10/%E4%B8%80%E4%BD%93%E5%8C%96%E6%B2%B9%E8%91%B5%E6%B8%85%E6%B4%97%E5%88%86%E7%BA%A7%E6%9C%BA%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="一体化油葵清选分级机构设计与运动学仿真"><img class="cover" src="/images/sunflower-separator-cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">一体化油葵清选分级机构设计与运动学仿真</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标针对油葵（葵花籽）清洗、去杂、分级依赖多套独立设备、系统冗余度高、转运复杂的痛点，本团队开发了一款集“曲柄滑块振动筛分、风选除杂、多层出料”于一体的集中式油葵清洗分级装置 。 项目目标是通过单电机集中驱动、带传动与曲柄连杆协同作用，在控制整机功耗与体积的前提下，稳定输出符合油葵透筛规律的直线往复振动，实现大、中、小籽粒的精准自动分流与清洗除杂。本人在团队中负责方案原理论证、运动参数计算、测试数据采集分析及后期控制调试工作。  二、 3D 模型与物理样机演示1. 3D 机构总装配在线交互 💡 操作提示：您可以用鼠标在下方窗口内拖动旋转、滚轮缩放，直观查看油葵清选机构三维总装、皮带传动及物料流向的设计细节。         2. 实际运行视频演示 🎬 点击播放：查看一体化油葵清洗分级机构的物理样机运行测试。         三、整体方案选型对比传统多级链条分选方案，最终确定了单源电机集中式联动系统 。通过带传动减速驱动偏心曲柄，使双层斜置筛网获得往复激振力；同时利用传动轴带动风机旋转产生稳定水平风压，在物料下落滑行过程中，实现清洗、除杂、粗分、精选的高效一体化作...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/10/10/%E7%83%9F%E5%B9%95%E5%B9%B2%E6%89%B0%E5%BC%B9%E7%9A%84%E6%8A%95%E6%94%BE%E7%AD%96%E7%95%A5/" title="数学建模-无人机投放烟雾弹策略分析优化"><img class="cover" src="/images/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B0%81%E9%9D%A2.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-10</div><div class="info-item-2">数学建模-无人机投放烟雾弹策略分析优化</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标 针对防空突防对抗中，饱和来袭导弹对真目标的威胁问题，设计一款基于多无人机协同的烟幕干扰弹投放控制系统。通过抛撒动态匀速下沉的掩护气溶胶云团，阻断导弹突防视线，从而对核心固定目标实施战术保护。 项目核心目标是在满足无人机物理机动性能区间、多弹抛撒最小时间间隔等硬性约束下，精细化解算出多无人机的最优飞行航向、速度、干扰弹抛撒时刻以及时间引信延迟，最大化突防突袭场景下的连续有效遮蔽时长。 本人在项目中担任队长，主导了导弹-无人机-烟幕弹多体动态空间运动学建模、突防拦截几何判据推导、启发式协同算法设计及全流程 MATLAB 仿真代码的开发与迭代。** 二、 3D 模型与物理样机演示 1. 算法寻优与核心计算流程 系统通过输入固定参数，同步解算无人机抛撒、烟幕自由落体、云团中心垂直下沉以及导弹匀速逼近的实时三维坐标，利用向量投影矩阵动态判定视线段相交状态，进而驱动智能算法实现全局寻优。   &#x20;     2. 实际运行视频演示 🎬 点击播放：查看基于 MATLAB 渲染的无人机群立体交战、烟幕云团全寿命周期动态覆盖导弹视线段的完整仿真动画。         三...</div></div></div></a></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 吕胜平</span></div><div class="footer_custom_text">吕胜平 · 机械工程个人作品集</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
