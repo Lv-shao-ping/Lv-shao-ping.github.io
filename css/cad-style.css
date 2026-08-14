@@ -1,0 +1,156 @@
+/* ==========================================================================
+   CAD / SolidWorks / ��е���̹�ҵ���ռ���ʽ�� (��������������ҵ�ʸ�)
+   ========================================================================== */
+
+/* 1. ��ҳ�������귽����� */
+body {
+    background-color: #f4f6f9 !important;
+    background-image: linear-gradient(to right, rgba(0, 50, 100, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 50, 100, 0.05) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #24292e;
+}
+
+/* 2. ���׸ɵ��ײ�������ɫ����Ϊ��ҽ�������̨��ɫ */
+#footer {
+    background: #1e2227 !important; /* ���̼�غ� */
+    border-top: 2px solid #3e4451 !important;
+    color: #abb2bf !important;
+}
+
+    #footer a {
+        color: #61afef !important;
+    }
+
+/* 3. ���׸ɵ����½�������ť������ɫ����Ϊ��ҵ��ɫ+��ʾ������ */
+#rightside > div > button,
+#rightside > div > a {
+    background-color: #2d323b !important;
+    border: 1px solid #4b5263 !important;
+    color: #ffffff !important;
+    border-radius: 2px !important;
+}
+
+    #rightside > div > button:hover,
+    #rightside > div > a:hover {
+        background-color: #ff6b00 !important; /* ��ҵ����ͣ */
+        border-color: #ff6b00 !important;
+    }
+
+/* 4. ��ҵӲ���濨Ƭ��������ֱ�� + 1px ��еϸ�ߣ� */
+.recent-post-item,
+#aside-content .card-widget,
+.layout > div:first-child:not(.recent-posts) {
+    border-radius: 0px !important;
+    border: 1px solid #d0d7de !important;
+    background: #ffffff !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+    .recent-post-item:hover,
+    #aside-content .card-widget:hover {
+        border-color: #007acc !important;
+        box-shadow: 0 4px 12px rgba(0, 122, 204, 0.12) !important;
+    }
+
+/* 5. ��������˿�Ƭ������̨ (Control Station) */
+#aside-content .card-info {
+    background: #21252b !important;
+    color: #abb2bf !important;
+    border-left: 4px solid #ff6b00 !important;
+}
+
+    #aside-content .card-info .author-info__name {
+        color: #ffffff !important;
+        font-family: "JetBrains Mono", Consolas, monospace !important;
+        font-weight: 700;
+    }
+
+    #aside-content .card-info #card-info-btn {
+        background: #3e4451 !important;
+        border-radius: 0px !important;
+        border: 1px solid #4b5263 !important;
+        color: #fff !important;
+    }
+
+        #aside-content .card-info #card-info-btn:hover {
+            background: #ff6b00 !important;
+        }
+
+/* 6. ��ǩ��鵵��壺��ҵ���Ʒ�� */
+.card-tag-cloud a {
+    border-radius: 0px !important;
+    background: #eaedf1 !important;
+    border: 1px solid #cfd5dc !important;
+    font-family: "JetBrains Mono", Consolas, monospace !important;
+    font-size: 11px !important;
+    color: #333 !important;
+}
+
+    .card-tag-cloud a:hover {
+        background: #007acc !important;
+        color: #fff !important;
+    }
+
+/* ==========================================================================
+   7. ����ʦ���� / CAD Property Manager ������壨ר�Ž���������⣩
+   ========================================================================== */
+.cad-property-panel {
+    background: #ffffff;
+    border: 1px solid #cfd5dc;
+    border-top: 3px solid #007acc; /* ��������������� */
+    padding: 16px 20px;
+    margin: 15px 0 25px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.cad-property-title {
+    font-family: "JetBrains Mono", Consolas, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e2227;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ����Ϊ�����������Ű棬����ÿ�п��ȣ����׷�ֹ���ֻ��� */
+.cad-property-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 30px;
+}
+
+@media (max-width: 768px) {
+    .cad-property-grid {
+        grid-template-columns: 1fr; /* �ֻ��˵�����ʾ */
+    }
+}
+
+.cad-property-item {
+    display: flex;
+    align-items: baseline;
+    font-size: 13.5px;
+    line-height: 1.6;
+    border-bottom: 1px dashed #e8ecf0;
+    padding-bottom: 4px;
+}
+
+/* ��ǩ��ֹ���У��̶����� */
+.cad-property-key {
+    color: #57606a;
+    white-space: nowrap !important;
+    flex-shrink: 0;
+    width: 125px; /* ��������ǩ���� */
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-weight: 500;
+}
+
+.cad-property-val {
+    color: #0f172a;
+    font-weight: 600;
+    word-break: break-all;
+}

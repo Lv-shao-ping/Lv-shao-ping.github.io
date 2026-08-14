@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统 | 吕胜平 · 机械工程作品集</title><meta name="author" content="吕胜平"><meta name="copyright" content="吕胜平"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、项目背景与目标微化工车间（占地通常50㎡）集成了高密度微型反应器与合成单元，具有空间紧凑与工艺高度精密的特点。在精细化工、制药及电子化学品生产中，高毒原料转运环节风险极为突出：传统人工搬运存在严重的职业暴露与误操作风险，常规 AGV 因子向转弯半径大无法在狭窄通道通行，而通用协作机械臂缺少危化品防泄漏与防爆感知设计。 本项目针对微化工高危转运场景，创新构建“微纳传感 + 智能机器人 + 安全预">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统">
+<meta property="og:url" content="https://lv-shao-ping.github.io/2026/05/25/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E7%BA%B3%E6%84%9F%E7%9F%A5%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BE%AE%E5%8C%96%E5%B7%A5%E9%AB%98%E6%AF%92%E5%8E%9F%E6%96%99%E6%99%BA%E8%83%BD%E8%BD%AC%E8%BF%90%E4%B8%8E%E5%AE%89%E5%85%A8%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="吕胜平 · 机械工程作品集">
+<meta property="og:description" content="一、项目背景与目标微化工车间（占地通常50㎡）集成了高密度微型反应器与合成单元，具有空间紧凑与工艺高度精密的特点。在精细化工、制药及电子化学品生产中，高毒原料转运环节风险极为突出：传统人工搬运存在严重的职业暴露与误操作风险，常规 AGV 因子向转弯半径大无法在狭窄通道通行，而通用协作机械臂缺少危化品防泄漏与防爆感知设计。 本项目针对微化工高危转运场景，创新构建“微纳传感 + 智能机器人 + 安全预">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lv-shao-ping.github.io/images/micro-chem-robot-cover.png">
+<meta property="article:published_time" content="2026-05-25T06:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-06T09:51:55.090Z">
+<meta property="article:author" content="吕胜平">
+<meta property="article:tag" content="微纳传感">
+<meta property="article:tag" content="工业机器人">
+<meta property="article:tag" content="智能预警">
+<meta property="article:tag" content="刚柔控制">
+<meta property="article:tag" content="MATLAB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lv-shao-ping.github.io/images/micro-chem-robot-cover.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统",
+  "url": "https://lv-shao-ping.github.io/2026/05/25/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E7%BA%B3%E6%84%9F%E7%9F%A5%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BE%AE%E5%8C%96%E5%B7%A5%E9%AB%98%E6%AF%92%E5%8E%9F%E6%96%99%E6%99%BA%E8%83%BD%E8%BD%AC%E8%BF%90%E4%B8%8E%E5%AE%89%E5%85%A8%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/",
+  "image": "https://lv-shao-ping.github.io/images/micro-chem-robot-cover.png",
+  "datePublished": "2026-05-25T06:00:00.000Z",
+  "dateModified": "2026-08-06T09:51:55.090Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "吕胜平",
+      "url": "https://lv-shao-ping.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lv-shao-ping.github.io/2026/05/25/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E7%BA%B3%E6%84%9F%E7%9F%A5%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BE%AE%E5%8C%96%E5%B7%A5%E9%AB%98%E6%AF%92%E5%8E%9F%E6%96%99%E6%99%BA%E8%83%BD%E8%BD%AC%E8%BF%90%E4%B8%8E%E5%AE%89%E5%85%A8%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/cad-style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/portfolio-cover.png.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">32</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E9%9B%86/"><i class="fa-fw fas fa-shapes"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/files/resume.pdf"><i class="fa-fw fas fa-file-pdf"></i><span> 简历下载</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/micro-chem-robot-cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吕胜平 · 机械工程作品集</span></a><a class="nav-page-title" href="/"><span class="site-name">基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E9%9B%86/"><i class="fa-fw fas fa-shapes"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/files/resume.pdf"><i class="fa-fw fas fa-file-pdf"></i><span> 简历下载</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-25T06:00:00.000Z" title="发表于 2026-05-25 14:00:00">2026-05-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-06T09:51:55.090Z" title="更新于 2026-08-06 17:51:55">2026-08-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81%E9%9B%86/">项目作品集</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="一、项目背景与目标"><a href="#一、项目背景与目标" class="headerlink" title="一、项目背景与目标"></a>一、项目背景与目标</h2><p>微化工车间（占地通常50㎡）集成了高密度微型反应器与合成单元，具有空间紧凑与工艺高度精密的特点。在精细化工、制药及电子化学品生产中，高毒原料转运环节风险极为突出：传统人工搬运存在严重的职业暴露与误操作风险，常规 AGV 因子向转弯半径大无法在狭窄通道通行，而通用协作机械臂缺少危化品防泄漏与防爆感知设计。</p>
+<p>本项目针对微化工高危转运场景，创新构建“微纳传感 + 智能机器人 + 安全预警”一体化闭环转运系统。系统以履带式差速底盘和四自由度轻量化机械臂为执行主体，集成 MEMS 气体传感阵列、微型力觉传感器、双冗余编码器与静电监测模块，突破了受限空间内高毒原料转运“安全、精度、效率”难以兼顾的行业难题。</p>
+<p><strong>本人在团队（成锋智造队）中主要负责微纳传感器信号采集与卡尔曼滤波融合算法开发、控制系统通信链路搭建及可行性报告/技术文档的撰写。</strong></p>
+<hr>
+<h2 id="二、系统架构与运行流程"><a href="#二、系统架构与运行流程" class="headerlink" title="二、系统架构与运行流程"></a>二、系统架构与运行流程</h2><h3 id="1-项目答辩与运行演示视频"><a href="#1-项目答辩与运行演示视频" class="headerlink" title="1. 项目答辩与运行演示视频"></a>1. 项目答辩与运行演示视频</h3><blockquote>
+<p>🎬 <strong>点击播放</strong>：查看微化工高毒原料智能转运与安全预警系统答辩与项目运行演示。</p>
+</blockquote>
+<div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin: 20px 0;">
+  <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117047757443457&bvid=BV1akun6qEos&cid=40651523274&p=1&as_wide=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
+</div>
+ 2. 算法与控制数据流拓扑图
+
+<p>本系统通过前端微纳感知、双核异构控制调度、李雅普诺夫动态模态切换以及三维数字孪生可视化，实现了转运全过程的主动风险感知与精密控制。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">==================================================================================================</span><br><span class="line">               微 化 工 高 毒 原 料 智 能 转 运 与 安 全 预 警 系 统 拓 扑 图</span><br><span class="line">==================================================================================================</span><br><span class="line"></span><br><span class="line"> 【 1. 多模态前端感知网络 】 ➜  · MEMS 气体传感阵列（实时监测苯、TDI等，响应 ≤ 60ms）</span><br><span class="line">                              · 微型力觉/压力传感器（末端抓取力动态调控）</span><br><span class="line">                              · AS5048A 磁编码器 + HEDL 光电编码器（双冗余角度反馈）</span><br><span class="line">                              · 静电检测模块（监测 4kV-20kV 静电电压与电荷趋势）</span><br><span class="line">                                      ▼</span><br><span class="line"> 【 2. 双核异构控制架构 】   ➜  · STM32H7 主控：1ms 级增量式 PID 闭环运动控制</span><br><span class="line">                              · ESP32 协处理器：802.11n 无线上报与 Modbus-TCP 工业以太网</span><br><span class="line">                                      ▼</span><br><span class="line"> 【 3. 多源数据融合与决策 】 ➜  · 卡尔曼滤波（Kalman Filter）：双编码器数据融合降噪</span><br><span class="line">                              · Shapley 特征优化 + 200 棵树随机森林：静电风险预测（准确率 93.6%）</span><br><span class="line">                              · 李雅普诺夫（Lyapunov）稳定性理论：刚柔动态模态切换（避障/定位）</span><br><span class="line">                                      ▼</span><br><span class="line"> 【 4. 执行机构自适应响应 】 ➜  · 履带底盘：差速转向（转弯半径 ≤ 0.6m，定位精度 ±0.2mm）</span><br><span class="line">                              · 4自由度机械臂：柔顺抓取、异常自动卸载与位姿校准</span><br><span class="line">                                      ▼</span><br><span class="line"> 【 5. 3DMAX 可视化与预警 】  ➜  · 3DMAX 场景重构：实时还原仓库/堆垛三维安全距离</span><br><span class="line">                              · 五级标色预警（红/橙/黄/蓝/绿）+ 应急避灾路线智能规划</span><br><span class="line">==================================================================================================</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Mermaid-交互式网络拓扑流程"><a href="#2-Mermaid-交互式网络拓扑流程" class="headerlink" title="2. Mermaid 交互式网络拓扑流程"></a>2. Mermaid 交互式网络拓扑流程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    classDef process fill:#f4f5f7,stroke:#333,stroke-width:2px;</span><br><span class="line">    classDef startEnd fill:#2d3748,stroke:#333,stroke-width:2px,color:#fff;</span><br><span class="line">    classDef condition fill:#edf2f7,stroke:#333,stroke-width:1px;</span><br><span class="line"></span><br><span class="line">    A[开始: 微化工高毒原料转运任务] --&gt; B(1. 多模态传感器数据采集&lt;br&gt;MEMS气体/末端压力/双编码器/静电检测)</span><br><span class="line">    B --&gt; C(2. 卡尔曼滤波数据融合&lt;br&gt;磁/光电双编码器角度与位置降噪)</span><br><span class="line">    C --&gt; D(3. 随机森林+Shapley模型评估&lt;br&gt;静电与气体泄漏风险智能分级)</span><br><span class="line">    </span><br><span class="line">    D --&gt; E&#123;4. 实时检测指标是否越限&#125;</span><br><span class="line">    E -- 触发预警 --&gt; F(启动五级标色报警&lt;br&gt;自动推演最优避灾路线并联动应急救援)</span><br><span class="line">    E -- 正常范围 --&gt; G(5. 李雅普诺夫动态模态切换&lt;br&gt;柔顺模式防碰撞 / 高强度模式精密定位)</span><br><span class="line">    </span><br><span class="line">    G --&gt; H(6. 双核异构控制输出&lt;br&gt;STM32H7 1ms级PID控制 + ESP32 工业通信)</span><br><span class="line">    H --&gt; I(7. 底盘与机械臂协同作业&lt;br&gt;履带差速转向 + 机械臂末端柔顺抓取)</span><br><span class="line">    I --&gt; J(8. 3DMAX 数字孪生重构&lt;br&gt;实时更新仓库堆垛安全距离与位姿)</span><br><span class="line">    F --&gt; J</span><br><span class="line">    J --&gt; K[结束: 安全完成高毒原料无人化转运]</span><br><span class="line"></span><br><span class="line">    class A,K startEnd;</span><br><span class="line">    class B,C,D,F,G,H,I,J process;</span><br><span class="line">    class E condition;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、整体方案选型"><a href="#三、整体方案选型" class="headerlink" title="三、整体方案选型"></a>三、整体方案选型</h2><p>系统打破了传统转运设备仅依赖红外避障或常规视觉的局限，选用双核异构控制 + 多源微纳传感融合 + 刚柔动态切换的综合技术方案。</p>
+<ul>
+<li><strong>控制主拓扑</strong>：选用 STM32H7 与 ESP32 构建双核架构，将高实时度的运动控制（1ms 控制周期）与高吞吐量的无线预警通信彻底解耦。</li>
+<li><strong>运载与执行</strong>：选用高咬合履带底盘搭配 4 自由度轻量化机械臂，既能在宽度0.8m的狭窄通道内实现原地转向（转弯半径 0.6m），又能在末端提供柔顺避障与过载保护。</li>
+</ul>
+<hr>
+<h2 id="四、核心算法设计与系统实现"><a href="#四、核心算法设计与系统实现" class="headerlink" title="四、核心算法设计与系统实现"></a>四、核心算法设计与系统实现</h2><ol>
+<li><strong>李雅普诺夫（Lyapunov）刚柔动态模态切换</strong>：根据构造的李雅普诺夫能量函数正定性与导数符号，系统在受扰避障时切换为“柔顺模式”，通过实时解析动力学模型自适应调整关节刚度；在精准投放时切换为“高强度模式”，结合电流反馈建立力矩-位置映射重校末端误差。</li>
+<li><strong>卡尔曼滤波双编码器冗余</strong>：采用 14bit 高分辨率 AS5048A 磁编码器与 HEDL 光电编码器组合。经卡尔曼滤波融合后，系统位置反馈 RMSE 显著降低，且在单编码器故障时可实现无缝容错切换。</li>
+<li><strong>基于 Shapley 特征优化的随机森林静电预警</strong>：针对高危有机溶剂转运中的静电隐患，构建了包含 200 棵决策树的集成学习模型。引入 Shapley 值计算特征权重，在 4kV-20kV 静电电压区间内实现了 93.6% 的预警准确率。</li>
+</ol>
+<hr>
+<h2 id="五、控制与性能验证"><a href="#五、控制与性能验证" class="headerlink" title="五、控制与性能验证"></a>五、控制与性能验证</h2><p>经过严苛的模拟微化工车间工况测试，系统各项关键性能指标全面优于设计要求：</p>
+<table>
+<thead>
+<tr>
+<th align="left">性能指标</th>
+<th align="left">实测结果</th>
+<th align="left">对比优势</th>
+<th align="left">设计标准</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>转弯半径</strong></td>
+<td align="left">0.60m</td>
+<td align="left">较传统 AGV (≥1.5m) 提升 60%</td>
+<td align="left">≤0.6m</td>
+</tr>
+<tr>
+<td align="left"><strong>路径错误率</strong></td>
+<td align="left">&lt; 2%</td>
+<td align="left">较人工操作 (≥15%) 降低 86.7%</td>
+<td align="left">&lt; 2%</td>
+</tr>
+<tr>
+<td align="left"><strong>液体泄漏接触量</strong></td>
+<td align="left">&lt; 1μL</td>
+<td align="left">达到微升级安全防护标准</td>
+<td align="left">&lt; 1μL</td>
+</tr>
+<tr>
+<td align="left"><strong>气体传感器响应</strong></td>
+<td align="left">60.0ms</td>
+<td align="left">响应速度提升 70%</td>
+<td align="left">&lt; 200ms</td>
+</tr>
+<tr>
+<td align="left"><strong>静电预警准确率</strong></td>
+<td align="left">93.6%</td>
+<td align="left">满足高危爆破防范要求</td>
+<td align="left">≥93.6%</td>
+</tr>
+<tr>
+<td align="left"><strong>重复定位精度</strong></td>
+<td align="left">±0.2mm</td>
+<td align="left">精度较常规提升 33%</td>
+<td align="left">±0.3mm</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、实物与调试"><a href="#六、实物与调试" class="headerlink" title="六、实物与调试"></a>六、实物与调试</h2><ul>
+<li><strong>三重安全冗余体系</strong>：<ul>
+<li><strong>电气隔离</strong>：采用磁耦与光耦双重物理屏障，阻断高大功率舵机噪声与浪涌，抗浪涌能力提升 40%；</li>
+<li><strong>电源冗余</strong>：24VDC 工业主电源搭配超级电容应急电源，主电断开时可维持系统安全运行 ≥5min；</li>
+<li><strong>视觉合规监测</strong>：实时监督防护服与穿戴规范，符合 ISO10218 工业机器人安全标准。</li>
+</ul>
+</li>
+<li><strong>3DMAX 数字孪生</strong>：基于 3DMAX 构建危化品仓库与危险源三维模型，将实时传感器数据映射至虚拟空间，提供包含红、橙、黄、蓝、绿五级标色的可视化管控界面与预案推演。</li>
+</ul>
+<hr>
+<h2 id="七、项目成果与技术文件"><a href="#七、项目成果与技术文件" class="headerlink" title="七、项目成果与技术文件"></a>七、项目成果与技术文件</h2><ul>
+<li><strong>竞赛荣誉</strong>：2026 年中国大学生机械工程创新创意大赛：第七届“明石杯”微纳传感技术与智能应用赛 —— <strong>省级二等奖</strong>。</li>
+</ul>
+<h3 id="🏆-获奖证书"><a href="#🏆-获奖证书" class="headerlink" title="🏆 获奖证书"></a>🏆 获奖证书</h3><p><img src="/images/micro-chem-award.jpg" alt="获奖证书"></p>
+<h3 id="🏆-官方获奖公示在线预览"><a href="#🏆-官方获奖公示在线预览" class="headerlink" title="🏆 官方获奖公示在线预览"></a>🏆 官方获奖公示在线预览</h3><div class="pdf-container" style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); position: relative;">
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 55px; background: transparent; z-index: 10;"></div>
+  <object data="/files/micro-chem-award-list.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="600px" style="border: none;">
+    <p>您的浏览器不支持在线预览 PDF，请 <a href="/files/micro-chem-award-list.pdf">点击此处下载查阅公示文件</a>。</p>
+  </object>
+</div>
+
+<h3 id="📄-可行性报告在线预览"><a href="#📄-可行性报告在线预览" class="headerlink" title="📄 可行性报告在线预览"></a>📄 可行性报告在线预览</h3><div class="pdf-container" style="margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); position: relative;">
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 55px; background: transparent; z-index: 10;"></div>
+  <object data="/files/micro-chem-feasibility-report.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="600px" style="border: none;">
+    <p>您的浏览器不支持在线预览 PDF，请 <a href="/files/micro-chem-feasibility-report.pdf">点击此处下载查阅可行性报告</a>。</p>
+  </object>
+</div>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lv-shao-ping.github.io">吕胜平</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lv-shao-ping.github.io/2026/05/25/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E7%BA%B3%E6%84%9F%E7%9F%A5%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BE%AE%E5%8C%96%E5%B7%A5%E9%AB%98%E6%AF%92%E5%8E%9F%E6%96%99%E6%99%BA%E8%83%BD%E8%BD%AC%E8%BF%90%E4%B8%8E%E5%AE%89%E5%85%A8%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/">https://lv-shao-ping.github.io/2026/05/25/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E7%BA%B3%E6%84%9F%E7%9F%A5%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BE%AE%E5%8C%96%E5%B7%A5%E9%AB%98%E6%AF%92%E5%8E%9F%E6%96%99%E6%99%BA%E8%83%BD%E8%BD%AC%E8%BF%90%E4%B8%8E%E5%AE%89%E5%85%A8%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lv-shao-ping.github.io" target="_blank">吕胜平 · 机械工程作品集</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E7%BA%B3%E4%BC%A0%E6%84%9F/">微纳传感</a><a class="post-meta__tags" href="/tags/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA/">工业机器人</a><a class="post-meta__tags" href="/tags/%E6%99%BA%E8%83%BD%E9%A2%84%E8%AD%A6/">智能预警</a><a class="post-meta__tags" href="/tags/%E5%88%9A%E6%9F%94%E6%8E%A7%E5%88%B6/">刚柔控制</a><a class="post-meta__tags" href="/tags/MATLAB/">MATLAB</a></div><div class="post-share"><div class="social-share" data-image="/images/micro-chem-robot-cover.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/" title="智能车车模设计"><img class="cover" src="/images/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%B4%9F%E5%8E%8B%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">智能车车模设计</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标参加全国大学生智能车竞赛疯狂电路赛道，针对壁面行驶智能车的工况需求，完成整车结构与负压吸附系统全流程设计。车体需承载驱动板、电池、核心板等全套硬件套件，在整机重量 ≤80g 的硬约束下提供 ≥20N 稳定吸附力，保障赛车弯道行驶不脱落、全程运行稳定。  二、 运行演示与方案选型1. 实际运行视频演示 🎬 点击播放：查看疯狂电路赛道壁面行驶智能车模实际样机的测试与运行效果。        2. 方案选型基于往届缩微电磁赛道车模技术积累、团队自研电路板尺寸约束与壁面行驶工况需求，敲定轻量化四轮布局车体方案，通过 ANSYS 静力学仿真完成结构拓扑挖槽减重，在保证结构刚性的前提下压缩整机重量； 对比轴流风扇、离心风轮、侧流风机三类吸附方案，最终选用后弯式离心风轮架构，完美匹配 130 高速电机 7 万转高转速工况，兼顾负压峰值与流量特性，配套车底密封毛刷结构抑制负压泄漏，提升吸附效率。  三、结构设计与优化 风轮设计：七片后弯式叶片，叶径 32mm，出口角 35°，优化叶片厚度与攻角，平衡刚性与风阻。 壳体设计：一体化 3D 打印蜗壳，PLA 材质，壁厚 0.8mm...</div></div></div></a><a class="pagination-related" href="/2026/05/20/%E6%99%BA%E8%83%BD%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%BE%E8%AE%A1/" title="中药材智能根切机器人设计"><img class="cover" src="/images/%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">中药材智能根切机器人设计</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标针对中药材须根切除依赖人工、效率低、精度差的行业痛点，设计一款基于机器视觉与并联机构的智能根切机器人，实现三七、人参等根茎类药材须根的自动化精准切除，替代人工加工，提升生产效率与成品一致性。本人担任项目队长，主导机械结构设计、精度优化与样机调试。  二、 3D 模型与物理样机演示1. 3D 模型在线交互 💡 操作提示：您可以用鼠标在下方窗口内拖动旋转、滚轮缩放，直观查看 3-PTT 并联机构的机械设计细节。           2. 实际运行视频演示 🎬 点击播放：查看 3-PTT 智能根切机器人实际样机的作业过程。            三、整体方案选型对比 SCARA 机器人、直角坐标机械手、三自由度并联机构三种方案，最终选用 3-PTT 解耦式并联机构作为执行端，搭配机器视觉轮廓提取系统，兼具高刚度、高精度、低惯量的优势，适配药材切割的高速高精度作业需求。  四、机械结构设计 并联执行机构：自主设计三自由度 3-PTT 并联机器人，三条支链 120° 圆周分布，采用平行四边形支链结构提升整体刚度，工作空间覆盖 50-100mm 直径药材。 切割刀头设计...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/01/05/%E9%BD%BF%E8%BD%AE%E7%AE%B1%E6%8C%AF%E5%8A%A8%E4%B8%8E%E8%BD%AC%E9%80%9F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C/" title="基于时频信号处理与深度学习的轴承故障诊断系统"><img class="cover" src="/images/gearbox-testing-cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-05</div><div class="info-item-2">基于时频信号处理与深度学习的轴承故障诊断系统</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标在旋转机械与现代工业装备体系中，轴承作为传递动力与承载的核心构件，长期处于高速、重载等恶劣工况下，极易出现外圈点蚀、剥落等典型缺陷。若不能实施预测性监测，将引发灾难性的机械停机故障。 本诊断系统针对 6904 深沟球轴承（依托 XAG a40 无刷电机动力源），利用数据采集硬件捕获健康状态与外圈故障（BPFO）状态下的高频振动信号。项目融合了传统时频域无量纲指标、希尔伯特解调包络谱、自适应信号分解（VMD/EMD）以及一维卷积神经网络（1D-CNN），构建了一套全自动化的智能故障诊断与动态转速解算闭环链路。 本人在项目中主导了多通道动态信号采集与分析处理 MATLAB 核心源码的编写、测试系统硬件链路配置、故障特征信息检索以及初成报告模版的建立。  二、 算法运行全流程1. 算法数据处理全链路流程图本诊断分析系统通过规范化的信号清洗、多维解调及智能网络训练，实现从原始振动序列到最终诊断报告的自动化生成。       图 1：轴承故障诊断分析系统算法运行全流程图    三、整体方案选型系统抛弃了单一的时域振幅阈值报警，选用时频解调+智能模型双轨校验的方案。针对非线...</div></div></div></a><a class="pagination-related" href="/2025/10/10/%E7%83%9F%E5%B9%95%E5%B9%B2%E6%89%B0%E5%BC%B9%E7%9A%84%E6%8A%95%E6%94%BE%E7%AD%96%E7%95%A5/" title="数学建模-无人机投放烟雾弹策略分析优化"><img class="cover" src="/images/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B0%81%E9%9D%A2.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-10</div><div class="info-item-2">数学建模-无人机投放烟雾弹策略分析优化</div></div><div class="info-2"><div class="info-item-1">一、项目背景与目标 针对防空突防对抗中，饱和来袭导弹对真目标的威胁问题，设计一款基于多无人机协同的烟幕干扰弹投放控制系统。通过抛撒动态匀速下沉的掩护气溶胶云团，阻断导弹突防视线，从而对核心固定目标实施战术保护。 项目核心目标是在满足无人机物理机动性能区间、多弹抛撒最小时间间隔等硬性约束下，精细化解算出多无人机的最优飞行航向、速度、干扰弹抛撒时刻以及时间引信延迟，最大化突防突袭场景下的连续有效遮蔽时长。 本人在项目中担任队长，主导了导弹-无人机-烟幕弹多体动态空间运动学建模、突防拦截几何判据推导、启发式协同算法设计及全流程 MATLAB 仿真代码的开发与迭代。** 二、 3D 模型与物理样机演示 1. 算法寻优与核心计算流程 系统通过输入固定参数，同步解算无人机抛撒、烟幕自由落体、云团中心垂直下沉以及导弹匀速逼近的实时三维坐标，利用向量投影矩阵动态判定视线段相交状态，进而驱动智能算法实现全局寻优。   &#x20;     2. 实际运行视频演示 🎬 点击播放：查看基于 MATLAB 渲染的无人机群立体交战、烟幕云团全寿命周期动态覆盖导弹视线段的完整仿真动画。         三...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/portfolio-cover.png.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">吕胜平</div><div class="author-info-description">机械工程个人作品集，智能装备、有限元仿真、新能源项目展示</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">32</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">一、项目背景与目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">二、系统架构与运行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E7%AD%94%E8%BE%A9%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91"><span class="toc-number">2.1.</span> <span class="toc-text">1. 项目答辩与运行演示视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Mermaid-%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E6%B5%81%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">2. Mermaid 交互式网络拓扑流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B4%E4%BD%93%E6%96%B9%E6%A1%88%E9%80%89%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">三、整体方案选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">四、核心算法设计与系统实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%8E%A7%E5%88%B6%E4%B8%8E%E6%80%A7%E8%83%BD%E9%AA%8C%E8%AF%81"><span class="toc-number">5.</span> <span class="toc-text">五、控制与性能验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%AE%9E%E7%89%A9%E4%B8%8E%E8%B0%83%E8%AF%95"><span class="toc-number">6.</span> <span class="toc-text">六、实物与调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%96%87%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">七、项目成果与技术文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8F%86-%E8%8E%B7%E5%A5%96%E8%AF%81%E4%B9%A6"><span class="toc-number">7.1.</span> <span class="toc-text">🏆 获奖证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8F%86-%E5%AE%98%E6%96%B9%E8%8E%B7%E5%A5%96%E5%85%AC%E7%A4%BA%E5%9C%A8%E7%BA%BF%E9%A2%84%E8%A7%88"><span class="toc-number">7.2.</span> <span class="toc-text">🏆 官方获奖公示在线预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-%E5%8F%AF%E8%A1%8C%E6%80%A7%E6%8A%A5%E5%91%8A%E5%9C%A8%E7%BA%BF%E9%A2%84%E8%A7%88"><span class="toc-number">7.3.</span> <span class="toc-text">📄 可行性报告在线预览</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/13/hello-world/" title="Welcome to my mechanical creativity gallery">Welcome to my mechanical creativity gallery</a><time datetime="2026-07-13T06:26:15.032Z" title="发表于 2026-07-13 14:26:15">2026-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/" title="智能车车模设计"><img src="/images/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%B4%9F%E5%8E%8B%E5%B0%81%E9%9D%A2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="智能车车模设计"/></a><div class="content"><a class="title" href="/2026/06/15/%E6%99%BA%E8%83%BD%E8%BD%A6%E8%BD%A6%E6%A8%A1%E8%AE%BE%E8%AE%A1/" title="智能车车模设计">智能车车模设计</a><time datetime="2026-06-15T06:00:00.000Z" title="发表于 2026-06-15 14:00:00">2026-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/25/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E7%BA%B3%E6%84%9F%E7%9F%A5%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BE%AE%E5%8C%96%E5%B7%A5%E9%AB%98%E6%AF%92%E5%8E%9F%E6%96%99%E6%99%BA%E8%83%BD%E8%BD%AC%E8%BF%90%E4%B8%8E%E5%AE%89%E5%85%A8%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/" title="基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统"><img src="/images/micro-chem-robot-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统"/></a><div class="content"><a class="title" href="/2026/05/25/%E5%9F%BA%E4%BA%8E%E5%BE%AE%E7%BA%B3%E6%84%9F%E7%9F%A5%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%BE%AE%E5%8C%96%E5%B7%A5%E9%AB%98%E6%AF%92%E5%8E%9F%E6%96%99%E6%99%BA%E8%83%BD%E8%BD%AC%E8%BF%90%E4%B8%8E%E5%AE%89%E5%85%A8%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/" title="基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统">基于微纳感知驱动的微化工高毒原料智能转运与安全预警系统</a><time datetime="2026-05-25T06:00:00.000Z" title="发表于 2026-05-25 14:00:00">2026-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/20/%E6%99%BA%E8%83%BD%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%BE%E8%AE%A1/" title="中药材智能根切机器人设计"><img src="/images/%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%81%E9%9D%A2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中药材智能根切机器人设计"/></a><div class="content"><a class="title" href="/2026/05/20/%E6%99%BA%E8%83%BD%E6%A0%B9%E5%88%87%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%BE%E8%AE%A1/" title="中药材智能根切机器人设计">中药材智能根切机器人设计</a><time datetime="2026-05-20T06:00:00.000Z" title="发表于 2026-05-20 14:00:00">2026-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/10/%E6%99%BA%E8%83%BD%E8%8C%B6%E9%A5%BC%E9%A2%84%E5%88%86%E7%A6%BB%E8%A3%85%E7%BD%AE%E8%AE%BE%E8%AE%A1/" title="智能茶饼预分离装置设计"><img src="/images/%E8%8C%B6%E9%A5%BC%E5%88%86%E7%A6%BB%E8%A3%85%E7%BD%AE%E5%B0%81%E9%9D%A2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="智能茶饼预分离装置设计"/></a><div class="content"><a class="title" href="/2025/10/10/%E6%99%BA%E8%83%BD%E8%8C%B6%E9%A5%BC%E9%A2%84%E5%88%86%E7%A6%BB%E8%A3%85%E7%BD%AE%E8%AE%BE%E8%AE%A1/" title="智能茶饼预分离装置设计">智能茶饼预分离装置设计</a><time datetime="2025-10-10T06:00:00.000Z" title="发表于 2025-10-10 14:00:00">2025-10-10</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 吕胜平</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
